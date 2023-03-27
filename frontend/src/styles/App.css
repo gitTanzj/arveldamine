@@ -1,0 +1,100 @@
+.App{
+    border-radius: 2px;
+    width: 60%;
+    margin: auto;
+    min-height: 1080px;
+    background-color: white;
+    color: black;
+}
+.header{
+    text-align: center;
+    border-bottom: 4px solid black;
+    margin: 20px;
+    padding-bottom: 20px;
+    height: auto;
+    max-height: 100px;    
+}
+.space{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr, 1fr;
+}
+.calc{
+    display: grid;
+    grid-template-rows: 1fr;
+}
+.create{
+    grid-column: 2;
+    display:flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.forms{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+}
+.forms input{
+    width: 80%;
+    margin:10px;
+}
+.create button{
+    font-family: 'Martian Mono', monospace;
+    font-weight: bolder;
+    padding:10px;
+    width: 80%;
+    height: 40%;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 0 3px 0 black;
+    background-color: white;
+    transition: 200ms;
+    outline:none;
+}
+.create button:hover{
+    transform: translateY(1px);
+    box-shadow: 0 2px 0 black;
+    cursor: pointer;
+}
+.create button:active{
+    transform: translateY(4px);
+    box-shadow: none;
+}
+.list{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:6px;
+}
+.list-item{
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    padding:10px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+.list-sum{
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    padding:10px;
+    border-bottom: 2px solid black;
+    font-weight: bolder;
+}
+.create input{
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    transition: 200ms;
+    outline:none;
+    color:#616161;
+}
+.create input:focus{    
+    color: black;
+}
