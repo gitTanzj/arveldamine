@@ -1,22 +1,33 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent} from "react";
 
 interface ListProps {
-    data: {summa:number, selgitus:string}[]
+    data: {_id?:any, selgitus?:string, summa?:string}[]
+}
+interface ListProp {
+    _id?:any,
+    selgitus?:string,
+    summa?:string
 }
 
 
 const List: FunctionComponent<ListProps> = (props) => {
 
+    const propsSum = () => {
+        let sum = 0
+        props.data.map((ob: ListProp) => sum = sum + parseFloat(ob.summa ? ob.summa : "0"))
+        return sum
+    }
+    
 
     return (
     <div className="list">
-        {props.data.map((ob:{summa:number, selgitus:string}) => 
-                <div className="list-item" key={props.data.indexOf(ob)}>
+        {props.data.map((ob:ListProp) => 
+                <div className="list-item" key={ob._id ? ob._id : 0}>
                     <div>{ob.summa}</div> - <div>{ob.selgitus}</div>
                 </div>)
         }
         <div className="list-sum">
-            <div>Summa: {}</div> 
+            <div><>Summa: {propsSum()}</></div> 
         </div>
     </div>
     );
