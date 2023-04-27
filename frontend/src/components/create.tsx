@@ -1,34 +1,33 @@
-import { FormEvent, FormEventHandler, FunctionComponent, useState } from "react";
-import axios from 'axios'
-
+import { FormEvent, FunctionComponent, useEffect, useState } from "react";
+import { useExpensesContext } from "../hooks/useExpensesContext";
 
 const Create:FunctionComponent = () => {
+    const {dispatch} = useExpensesContext()
     const [summa, setSumma] = useState("");
     const [selgitus, setSelgitus] = useState("");
 
+    
+    
     const handleSubmit = async (e:FormEvent) => {
         e.preventDefault()
-        
-
-        // alert(`${summa}, ${selgitus}`)
-        
-        const data = {
-            summa: summa,
-            selgitus:selgitus
-        }
-
-
-        const response = await fetch('api/list-data/kalle',{
-            method: 'POST',
-            body:JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
+        if(summa && selgitus){
+            const data = {
+                summa : summa,
+                selgitus : selgitus
             }
-        })
-
-        const json = await response.json()
-        console.log(json)
-    }
+            
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            };
+            fetch('/api/process_data', requestOptions)
+                .then(response => response.json())
+                .then(dispatch({type:"CREATE_EXPENSE", payload:data}))
+            
+            setSumma("")
+            setSelgitus("")
+    }}
 
     return (
         <div className="create">

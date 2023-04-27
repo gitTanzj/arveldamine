@@ -1,4 +1,4 @@
-import { FunctionComponent} from "react";
+import { FunctionComponent } from "react";
 
 interface ListProps {
     data: {_id?:any, selgitus?:string, summa?:string}[]
@@ -15,7 +15,7 @@ const List: FunctionComponent<ListProps> = (props) => {
     const propsSum = () => {
         let sum = 0
         props.data.map((ob: ListProp) => sum = sum + parseFloat(ob.summa ? ob.summa : "0"))
-        return sum
+        return sum.toFixed(2)
     }
     
 

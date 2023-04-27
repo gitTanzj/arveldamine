@@ -1,22 +1,23 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect } from "react";
 import Create from "./create";
 import List from "./list";
 import axios from "axios";
+import { useExpensesContext } from "../hooks/useExpensesContext";
  
 const Calc: FunctionComponent = () => {
-
-    const [data, setData] = useState([{}])
+    const { expenses, dispatch } = useExpensesContext()
 
     useEffect(() => {
         const FetchData = async () => {
             const response = await axios.get('/api/list-data/kalle')
-            setData(response.data)
+            dispatch({type:"SET_EXPENSES", payload: response.data})
         }
         FetchData()
     }, [])
+
     return (
     <div className="calc">
-        <List data={data}/>
+        <List data={expenses}/>
         <Create/>
     </div>
     );
