@@ -1,7 +1,6 @@
 import express from "express"
 import { PORT } from "./config"
-import {getEntries, addEntry} from "./routes/handleMongo"
-import bodyParser from 'body-parser';
+import {getEntries, addEntry, deleteEntry} from "./routes/handleMongo"
 const app = express()
 
 app.use(express.json())
@@ -28,6 +27,11 @@ app.post('/api/process_data', (req, res) => {
     const entry = {summa: req.body.summa, selgitus: req.body.selgitus}
     addEntry('Kalle', entry)
 });
+
+app.delete('/api/delete_data', (req, res) => {
+    console.log(`DELETE REQUEST SENT FOR ${req.body.id}!`)
+    deleteEntry("Kalle", req.body.id)
+})
 
 
 app.listen(PORT, () => {

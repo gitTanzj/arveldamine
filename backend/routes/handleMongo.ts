@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 import { DB_CONNECTION } from '../config'
 
 
@@ -17,6 +17,12 @@ export const addEntry = async (name:string, entry: {summa:string, selgitus:strin
     await expenseCollection.insertOne(entry)
 }
 
-module.exports = {getEntries, addEntry}
+export const deleteEntry = async (name:string, id:string) => {
+    const database = client.db('arve')
+    const expenseCollection = database.collection(name);
+    await expenseCollection.deleteOne({"_id" : new ObjectId(id)})
+}
+
+module.exports = {getEntries, addEntry, deleteEntry}
 
 

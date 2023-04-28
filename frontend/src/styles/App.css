@@ -73,11 +73,29 @@
 }
 .list-item{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 80%;
     padding:10px;
     border: 2px solid black;
     border-radius: 5px;
+}
+.list-item-content{
+    display: flex;
+    justify-content: space-evenly;
+    width:inherit;
+}
+.list-item-button{
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: white;
+    border: none;
+    color: white;
+    transition: 0.2s;
+}
+.list-item:hover > .list-item-button{
+    color:black;
+    cursor: pointer;
 }
 .list-sum{
     display: flex;
@@ -98,3 +116,8 @@
 .create input:focus{    
     color: black;
 }
+.prevent-select {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+  }

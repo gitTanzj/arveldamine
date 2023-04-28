@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { ListItem } from "./listItem";
 
 interface ListProps {
     data: {_id?:any, selgitus?:string, summa?:string}[]
@@ -20,12 +21,10 @@ const List: FunctionComponent<ListProps> = (props) => {
     
 
     return (
-    <div className="list">
+    <div className="list prevent-select">
         {props.data.map((ob:ListProp) => 
-                <div className="list-item" key={ob._id ? ob._id : 0}>
-                    <div>{ob.summa}</div> - <div>{ob.selgitus}</div>
-                </div>)
-        }
+                <ListItem summa={ob.summa} selgitus={ob.selgitus} itemId={ob._id} key={ob._id}/>
+        )}
         <div className="list-sum">
             <div><>Summa: {propsSum()}</></div> 
         </div>
